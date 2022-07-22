@@ -1,4 +1,3 @@
-
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
@@ -11,7 +10,7 @@ import Icon from "@mui/material/Icon";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
-function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
+function ComplexStatisticsCard({ color, title, count, percentage, icon, date }) {
   return (
     <Card>
       <MDBox display="flex" justifyContent="space-between" pt={1} px={2}>
@@ -33,7 +32,7 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
           </Icon>
         </MDBox>
         <MDBox textAlign="right" lineHeight={1.25}>
-          <MDTypography variant="button" fontWeight="light" color="text">
+          <MDTypography variant="button" fontWeight={false} color="text">
             {title}
           </MDTypography>
           <MDTypography variant="h4">{count}</MDTypography>
@@ -41,7 +40,13 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
       </MDBox>
       <Divider />
       <MDBox pb={2} px={2}>
-        <MDTypography component="p" variant="button" color="text" display="flex">
+        <MDTypography
+          component="p"
+          variant="button"
+          color="text"
+          display="flex"
+          justifyContent="space-between"
+        >
           <MDTypography
             component="span"
             variant="button"
@@ -50,7 +55,9 @@ function ComplexStatisticsCard({ color, title, count, percentage, icon }) {
           >
             {percentage.amount}
           </MDTypography>
-          &nbsp;{percentage.label}
+          <MDTypography component="span" variant="button" fontWeight="bold">
+            {date}
+          </MDTypography>
         </MDTypography>
       </MDBox>
     </Card>

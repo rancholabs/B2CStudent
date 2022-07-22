@@ -1,4 +1,3 @@
-
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
@@ -29,7 +28,7 @@ function DataTableHeadCell({ width, children, sorted, align, ...rest }) {
         {...rest}
         position="relative"
         textAlign={align}
-        color={darkMode ? "white" : "secondary"}
+        color={darkMode ? "white" : "#000"}
         opacity={0.7}
         sx={({ typography: { size, fontWeightBold } }) => ({
           fontSize: size.xxs,

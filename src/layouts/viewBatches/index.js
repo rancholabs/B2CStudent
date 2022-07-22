@@ -3,6 +3,14 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import axios from "axios";
 
+import { Link } from "react-router-dom";
+import "examples/Cards/Batch/Batch.css";
+// @mui material components
+import Grid from "@mui/material/Grid";
+import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
+
+// Material Dashboard 2 React components
+import MDBox from "components/MDBox";
 //batchCard
 
 import Batch from "examples/Cards/Batch/Batch.js";
@@ -13,6 +21,7 @@ function Batches() {
   const [BatchesData, setBatchesData] = useState([]);
 
   useLayoutEffect(() => {
+    setBatchesData([]);
     axios
       .get(`http://localhost:5000/api/b2c/details/${sid}`)
       .then((res) => {
@@ -41,8 +50,38 @@ function Batches() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      {BatchesData.length != 0 &&
-        BatchesData.map((batch, index) => <Batch key={index} batch={batch}></Batch>)}
+      <br></br>
+      <Grid container spacing={3}>
+        {BatchesData.map((batch, index) => (
+          <Grid key={index} item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <Link to="/view-class" state={batch}>
+                <ComplexStatisticsCard
+                  color="dark"
+                  icon="weekend"
+                  title={`No. Of Classes - ${batch.classDataArray.length}`}
+                  count={batch.batchName}
+                  date={batch.startingDate.split("T")[0]}
+                  percentage={{
+                    color:
+                      batch.batchStatus === "running"
+                        ? "success"
+                        : batch.batchStatus === "willStart"
+                        ? "warning"
+                        : "danger",
+                    amount:
+                      batch.batchStatus === "running"
+                        ? "running"
+                        : batch.batchStatus === "willStart"
+                        ? "will start"
+                        : "ended",
+                  }}
+                />
+              </Link>
+            </MDBox>
+          </Grid>
+        ))}
+      </Grid>
     </DashboardLayout>
   );
 }
