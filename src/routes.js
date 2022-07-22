@@ -7,6 +7,7 @@ import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import Class from "layouts/class/Class.js";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -18,14 +19,18 @@ const routes = [
     key: "dashboard",
     icon: "",
     route: "/dashboard",
+    sidebar: "yes",
+
     component: <Dashboard />,
   },
   {
     type: "collapse",
-    name: "View Batches",
+    name: "Enroll Courses",
     key: "viewBatches",
     icon: "",
     route: "/viewBatches",
+    sidebar: "yes",
+
     component: <ViewBatches />,
   },
   {
@@ -34,6 +39,8 @@ const routes = [
     key: "tables",
     icon: "",
     route: "/tables",
+    sidebar: "yes",
+
     component: <Tables />,
   },
   {
@@ -42,6 +49,8 @@ const routes = [
     key: "billing",
     icon: "",
     route: "/billing",
+    sidebar: "yes",
+
     component: <Billing />,
   },
 
@@ -51,6 +60,8 @@ const routes = [
     key: "notifications",
     icon: "",
     route: "/notifications",
+    sidebar: "yes",
+
     component: <Notifications />,
   },
   {
@@ -59,6 +70,8 @@ const routes = [
     key: "profile",
     icon: "",
     route: "/profile",
+    sidebar: "yes",
+
     component: <Profile />,
   },
   {
@@ -67,6 +80,8 @@ const routes = [
     key: "sign-in",
     icon: "",
     route: "/authentication/sign-in",
+    sidebar: "yes",
+
     component: <SignIn />,
   },
   {
@@ -75,7 +90,17 @@ const routes = [
     key: "sign-up",
     icon: "",
     route: "/authentication/sign-up",
+    sidebar: "yes",
     component: <SignUp />,
+  },
+  {
+    type: "collapse",
+    name: "View Class",
+    key: "view-class",
+    icon: "",
+    route: "/view-class",
+    sidebar: "no",
+    component: <Class />,
   },
 ];
 

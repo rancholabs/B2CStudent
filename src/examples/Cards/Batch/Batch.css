@@ -1,0 +1,9 @@
+.outerDiv{
+    width: fit-content;
+    background: rgb(122, 126, 129);
+    border-radius: 10px;
+    padding: 10px;
+}
+.BatchHeading{
+    text-align: center;
+}
